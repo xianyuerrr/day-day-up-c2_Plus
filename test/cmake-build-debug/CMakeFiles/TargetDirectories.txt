@@ -1,3 +1,0 @@
-D:/daima/c++/test/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-D:/daima/c++/test/cmake-build-debug/CMakeFiles/test.dir
-D:/daima/c++/test/cmake-build-debug/CMakeFiles/edit_cache.dir
