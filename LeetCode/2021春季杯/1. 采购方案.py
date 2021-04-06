@@ -1,4 +1,5 @@
 import math
+import collections
 class Solution:
     def purchasePlans(self, nums: List[int], target: int) -> int:
         # Python 太慢了，双指针还总是超时，只能用 set 再次降低运算量

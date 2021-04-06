@@ -4,24 +4,19 @@ using namespace std;
 
 int main() {
     vector<int> nums;
-    vector<bool> flags;
+    // const int N{20};
     int ans;
     for (int idx{0}; idx < N; idx++) {
         scanf("%d", &ans);
         nums.push_back(ans);
     }
-    sort(nums.begin(), nums.end());
-    for (int i{0}; i < N-1; i++) {
-        for (int j=i+1; i < N; j++) {
-            if (nums[j] % nums[i] == 0) {
-                flags[j] = true;
+    for (int i{0}; i < N; i++) {
+        for (int j{0}; j < N; j++) {
+            if (i == j) continue;
+            if (nums[i] % nums[j] == 0) {
+                printf("%d\n", nums[i]);
+                break;
             }
-        }
-    }
-    for (int idx{0}; idx < N; idx++) {
-        printf("--%d", flags[idx]);
-        if (flags[idx]) {
-            printf("%d\n", nums[idx]);
         }
     }
     return 0;
