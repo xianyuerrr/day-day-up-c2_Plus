@@ -10,7 +10,7 @@ int main() {
     while (++row <= rows) {
         printf("Case %d", row);
         scanf("%lld%lld", &a, &b);
-        printf("%lld + %lld = %lld", a, b, a+b);
+        printf("%lld + %lld = %lld\n", a, b, a+b);
 
     }
     
