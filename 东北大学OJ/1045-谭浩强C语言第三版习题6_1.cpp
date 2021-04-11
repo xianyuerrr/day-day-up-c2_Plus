@@ -13,6 +13,6 @@ int main() {
     scanf("%d%d", &a, &b);
     int g = gcd(a, b);
     int gbs = a * b / g;
-    printf("%d %d", gcd, gbs);
+    printf("%d %d", g, gbs);
     return 0;
 }
