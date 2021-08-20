@@ -1,3 +1,4 @@
+from typing import *
 class Solution:
     def updateMatrix(self, mat: List[List[int]]) -> List[List[int]]:
         # 应该可以使用 BFS 和 DP
@@ -9,7 +10,7 @@ class Solution:
                 if dp[i][j] == 0:
                     continue
                 dp[i][j] = min(dp[i][j], (dp[i-1][j] if i != 0 else max_dis) + 1, (dp[i][j-1] if j != 0 else max_dis) + 1)
-        print(dp)
+        # print(dp)
         for i in range(m-1, -1, -1):
             for j in range(n-1, -1, -1):
                 if dp[i][j] == 0:
