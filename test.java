@@ -1,7 +1,11 @@
 public class test {
     public static void main(String[] args) {
+        // Java 基本类型的包装类的大部分都实现了常量池技术
+        // 使用 new 创建的一定在堆中
+        // 使用 valueOf()方法（装箱） 创建的在常量池中，所以下面的 i1 和 i2 是同一个对象
+        // 传入小于128的值时，返回的是内置的缓存值，节省空间和效率。
         Integer i1 = 1;
-        Integer i2 = i1;
+        Integer i2 = 1;
         System.out.println(i1);
         System.out.println(i2);
         System.out.println(i1==i2);
