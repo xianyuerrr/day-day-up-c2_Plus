@@ -5,7 +5,7 @@ class Solution:
     def numberOfCombinations(self, num: str) -> int:
         n = len(num)
         mod = pow(10, 9) + 7
-        # 1 <= n <= 3500，所以不能用回溯了
+        # 1 <= n <= 3500，正确归正确，但是严重超时，DP是正解
         @lru_cache()
         def dfs(l, r, pre_val, pre_len):
             print(pre_val)
