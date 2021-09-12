@@ -1,19 +1,15 @@
+from typing import *
 class Solution:
     def numberOfUniqueGoodSubsequences(self, binary: str) -> int:
-        mod = pow(10, 9) + 7
-        n = len(binary)
-        res = 0
+        mod = 10**9 + 7
 
-        l_lis = [0] * n
-        r_lis = [0] * n
-        l = 0
-        r = 0
-        for i in range(n):
-            if binary[i] == '0':
-                l += 1
+        even = odd = 0
+        for ch in binary:
+            if ch == "0":
+                even = (even + odd) % mod
             else:
-                r += 1
-            l_lis[i] = l
-            r_lis[i] = r
-        print(l_lis)
-        print(r_lis)
+                odd = (even + odd + 1) % mod
+        
+        ans = (even + odd + ("0" in binary)) % mod
+        return ans
+        
