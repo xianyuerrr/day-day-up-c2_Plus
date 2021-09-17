@@ -25,10 +25,11 @@ int main() {
             ridx++;
         }
         // 分别在 (-1, lidx) 与 (ridx, n-1) 寻找有几个谷底（即 101 型）
+        // 转化为从左往右寻找上坡个数 和 从右往左寻找上坡个数
+        // 因为 -1 和 n 是天然的障壁，不存在比其更大的高度
 
-        // 设置 ll 是为了避免 重复计算一个谷底
         bool flag = false;
-        for (int i=1; i<lidx; i++) {
+        for (int i=1; i<=lidx; i++) {
             if (high[i] > high[i-1] && !flag) {
                 res += 1;
                 flag = true;
@@ -38,7 +39,7 @@ int main() {
         }
 
         flag = false;
-        for (int i=n-1; i>ridx; i--) {
+        for (int i=n-1; i>=ridx; i--) {
             if (high[i] > high[i+1] && !flag) {
                 res += 1;
                 flag = true;
