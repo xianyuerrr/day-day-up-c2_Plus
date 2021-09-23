@@ -10,24 +10,29 @@ def func():
     m = int(input())
     lis = list(map(int, input().split()))
     
+    # 总空间大小
     ssum = 0
     for i in range(n):
         ssum += cnt[i] * typ[i]
     
     have = [0] * n
     res = -1
-    # 爆搜
-    def dfs(i, ans):
+
+    def bcak(i, ans):
         nonlocal res
+        # 剪枝
+        if ans > res:
+            return
+        # 已经剪过支，所以 res >= ans
         if i == m:
-            res = max(res, ans)
+            res = ans
             return
         for t in range(n):
             if typ[t] < lis[i]:
                 continue
             if have[t] >= lis[i]:
                 have[t] -= lis[i]
-                dfs(i+1, ans)
+                bcak(i+1, ans)
                 have[t] += lis[i]
             else:
                 if cnt[t] == 0:
@@ -38,10 +43,12 @@ def func():
                     
                     cnt[t] -= 1
                     have[t] = typ[t] - lis[i]
-                    dfs(i+1, ans - typ[t])
+                    bcak(i+1, ans - typ[t])
                     have[t] = leave
                     cnt[t] += 1
-    dfs(0, ssum)
+        return
+        
+    bcak(0, ssum)
     print(res)
     return
 
