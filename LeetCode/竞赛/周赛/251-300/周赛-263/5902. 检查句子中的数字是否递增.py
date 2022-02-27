@@ -1,3 +1,4 @@
+from typing import *
 class Solution:
     def areNumbersAscending(self, s: str) -> bool:
         lis = s.split()
