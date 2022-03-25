@@ -1,3 +1,4 @@
+import java.sql.Time;
 import java.util.Stack;
 
 class Trie {
@@ -43,7 +44,7 @@ class Solution {
         long curr = 1;
         k--;
         while (k != 0) {
-            // System.out.println(curr + ", a: " + k);
+            // System.out.println(curr + ", " + k);
             int diff = getLen(n) - getLen((int)curr);
             int mod = 0;
             for (int i = 0; i <= diff; i++) {
@@ -52,7 +53,6 @@ class Solution {
             while (curr % 10 != 9 && curr + 1 <= n / Math.pow(10, diff) && k >= mod) {
                 k -= mod;
                 curr++;
-                // System.out.println(curr + ", b: " + k);
             }
             if(k == 0) break;
 
@@ -103,5 +103,13 @@ class Solution {
             stk.pop();
         }
         return;
+    }
+
+    public static void main(String[] args) {
+        Solution s = new Solution();
+        long start = System.currentTimeMillis();
+        System.out.println(s.findKthNumber(596516650, 593124772));
+        long end = System.currentTimeMillis();
+        System.out.println((end-start) / 1000);
     }
 }
