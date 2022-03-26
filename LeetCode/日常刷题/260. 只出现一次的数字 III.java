@@ -1,0 +1,20 @@
+class Solution {
+    public int[] singleNumber(int[] nums) {
+        int xorsum = 0;
+        for (int num : nums) {
+            xorsum ^= num;
+        }
+        // 防止溢出
+        int lsb = (xorsum == Integer.MIN_VALUE ? xorsum : xorsum & (-xorsum));
+        // 使用位运算 \texttt{x \& -x}x & -x 取出 xx 的二进制表示中最低位那个 11
+        int type1 = 0, type2 = 0;
+        for (int num : nums) {
+            if ((num & lsb) != 0) {
+                type1 ^= num;
+            } else {
+                type2 ^= num;
+            }
+        }
+        return new int[]{type1, type2};
+    }
+}
