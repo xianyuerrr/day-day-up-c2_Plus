@@ -16,14 +16,14 @@ class Solution:
         count = [0] * n
         rectangles.sort(key=lambda x: x[1])
 
-        # 存储 y 值大于 point[1] 的所有 point，由于 y 值有序，只用存储 x 值
+        # 存储 y 值大于 point[i] 的所有 point，由于 y 值有序，只用存储 x 值
         lis = []
 
         indexs = list(range(n))
         # 按照 y 从大到小排序，保证 lis 可以复用
         indexs.sort(key=lambda x: -points[x][1])
-
         pre_r = m-1
+
         for i in indexs:
             x, y = points[i]
             r = pre_r

@@ -6,15 +6,30 @@ class Solution:
     def fullBloomFlowers(self, flowers: List[List[int]], persons: List[int]) -> List[int]:
         m = len(flowers)
         n = len(persons)
+        res = [0] * n
 
         # 把花期表按照花期开始时间排序
+
+        # 正在开的花的个数 为所有在此时间节点及之前开放的花的个数减去在时间节点之前凋谢的花的个数
+        open = [x for x, y in flowers]
+        close = [y for x, y in flowers]
+        open.sort(), close.sort()
+        open_cnt = close_cnt = 0
+        for cur, idx in sorted(zip(persons, range(n)), key=lambda x: x[0]):
+            while open_cnt < n and open[open_cnt] <= cur:
+                open_cnt += 1
+            while close_cnt < n and close[close_cnt] < cur:
+                close_cnt += 1
+            res[idx] = open_cnt - close_cnt
+        return res
+
+
         flowers.sort()
         flower_idx = 0
-
-        res = [0] * n
         q = []
         size = 0
 
+        # 按时间遍历 + 小根堆存储结束时间 + 延迟删除
         for cur, idx in sorted(zip(persons, range(n)), key=lambda x: x[0]):
             # 把花期已经结束的弹出堆
             while size > 0 and q[0] < cur:
