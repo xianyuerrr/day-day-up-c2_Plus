@@ -13,17 +13,12 @@ class Solution {
                 if (words[i-1].charAt(j) == words[i].charAt(j)) continue;
                 break;
             }
-            if (j == Math.min(m, n) && m > n) return false;
-            else if (map[words[i-1].charAt(j) - 'a'] > map[words[i].charAt(j) - 'a']) return false;
+            if (j == Math.min(m, n)) {
+                if (m > n) return false; 
+            } else {
+                if (map[words[i-1].charAt(j) - 'a'] > map[words[i].charAt(j) - 'a']) return false;
+            }
 
-            // for (int j = 0; j < Math.min(m, n); j++) {
-            //     if (map[words[i-1].charAt(j) - 'a'] > map[words[i].charAt(j) - 'a']) flag = -1;
-            //     else if (map[words[i-1].charAt(j) - 'a'] < map[words[i].charAt(j) - 'a']) flag = 1;
-            //     else continue;
-            //     if (flag == -1) return false;
-            //     if (flag == 1) break;
-            // }
-            // if (flag == 0 && m > n) return false;
         }
         return true;
     }
