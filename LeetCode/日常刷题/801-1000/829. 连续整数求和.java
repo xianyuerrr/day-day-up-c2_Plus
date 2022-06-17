@@ -1,13 +1,13 @@
 class Solution {
     public int consecutiveNumbersSum(int n) {
-        int ans = 0;
+        int res = 0;
         int bound = 2 * n;
         for (int k = 1; k * (k + 1) <= bound; k++) {
             if (isKConsecutive(n, k)) {
-                ans++;
+                res++;
             }
         }
-        return ans;
+        return res;
     }
 
     public boolean isKConsecutive(int n, int k) {
