@@ -7,6 +7,7 @@ class Solution {
         }
         if (destination < start) {
             int ans = destination;
+            int ans = destination;
             destination = start;
             start = ans;
         }
