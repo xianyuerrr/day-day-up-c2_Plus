@@ -1,6 +1,10 @@
+from typing import List
+
+
 class Solution:
     n = pow(10, 6+1)
     primeLis = [True] * n
+
     def __init__(self):
         for i in range(2, (self.n >> 2) + 1):
             tmp = i
